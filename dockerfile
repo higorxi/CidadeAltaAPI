@@ -1,15 +1,13 @@
-FROM node:16.14-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache git
-RUN apk add curl
+COPY package*.json ./
 
-COPY ["package.json", "package-lock.json", "tsconfig.json", ".env", "./"]
-RUN npm cache clean --force
 RUN npm install
+
 COPY . .
 
 EXPOSE 3000
 
-ENTRYPOINT [ "npm", "run", "start:dev" ]
+CMD ["npm", "run", "start:dev"]
