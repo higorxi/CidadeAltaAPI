@@ -8,10 +8,13 @@ import {
     UpdateDateColumn,
     BeforeInsert,
     BeforeUpdate,
+    JoinTable,
+    ManyToMany,
   } from 'typeorm';
   import * as bcrypt from 'bcryptjs';
   import { BCRYPT_HASH_ROUND } from 'src/configs/general.config';
-  
+  import { Badge } from './badge.entity';
+
   @Entity()
   @Unique(['email'])
   export class User extends BaseEntity {
@@ -32,6 +35,10 @@ import {
   
     @Column({ nullable: false })
     password: string;
+
+    @ManyToMany(() => Badge)
+    @JoinTable()
+    badges: Badge[];
   
     @CreateDateColumn()
     createdAt: Date;
