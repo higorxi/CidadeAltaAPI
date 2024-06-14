@@ -1114,7 +1114,7 @@
     "@types/methods" "^1.1.4"
     "@types/superagent" "^8.1.0"
 
-"@types/validator@^13.11.8":
+"@types/validator@^13.11.10", "@types/validator@^13.11.8":
   version "13.11.10"
   resolved "https://registry.npmjs.org/@types/validator/-/validator-13.11.10.tgz"
   integrity sha512-e2PNXoXLr6Z+dbfx5zSh9TRlXJrELycxiaXznp4S5+D2M3b9bqJEitNHA5923jhnB2zzFiZHa2f0SI1HoIahpg==
