@@ -3,7 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { SECRET_KEY } from 'src/configs/general.config';
 
-
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
@@ -15,15 +14,31 @@ export class AuthMiddleware implements NestMiddleware {
 
     const parts = authHeader.split(' ');
 
-    if (parts.length !== 2) throw new UnauthorizedException('Invalid token');
+    if (parts.length !== 2) {
+      throw new UnauthorizedException('Invalid token');
+    }
 
     const [scheme, token] = parts;
 
-    if (scheme.toLowerCase() !== 'bearer')
-        throw new UnauthorizedException('Token malformatted');
+    if (scheme.toLowerCase() !== 'bearer') {
+      throw new UnauthorizedException('Token malformatted');
+    }
 
     try {
-      jwt.verify(token, SECRET_KEY); 
+      const decodedToken = jwt.verify(token, SECRET_KEY) as jwt.JwtPayload; 
+
+      if (!decodedToken.sub) {
+        throw new UnauthorizedException('Invalid token');
+      }
+
+      const path = req.baseUrl; 
+      const parts = path.split('/');
+      const userId = parts[parts.length - 1]; 
+
+      if (userId !== decodedToken.sub) {
+        throw new UnauthorizedException('Unauthorized access');
+      }
+
       next();
     } catch (error) {
       throw new UnauthorizedException('Invalid token');
