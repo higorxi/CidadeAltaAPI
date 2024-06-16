@@ -26,6 +26,9 @@ import {
   
     @Column({ nullable: false, type: 'varchar', length: 200 })
     name: string;
+
+    @Column({ nullable: false, type: 'varchar', length: 200, default: '' })
+    profileImageUrl: string; 
   
     @Column({ nullable: false, type: 'varchar', length: 20, default: 'common-user' })
     role: string;

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
+import { LoginResponseDTO } from 'src/DTO/auth/loginresponse.dto';
 import { User } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';
 
@@ -29,10 +30,21 @@ export class AuthService {
     return user;
   }
 
-  async login(user: any) {
+  async login(user: User) {
     const payload = { email: user.email, sub: user.id };
+
+    const userData: LoginResponseDTO['user'] = {
+      email: user.email,
+      id: user.id,
+      name: user.name,
+      role: user.role,
+      badges: user.badges,
+      profileImageUrl: user.profileImageUrl
+    };
+
     return {
-      accessToken: this.jwtService.sign(payload),
+      user: userData,
+      accessToken: await this.jwtService.sign(payload),
     };
   }
 }
