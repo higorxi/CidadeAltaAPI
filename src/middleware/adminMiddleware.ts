@@ -28,7 +28,7 @@ export class AdminMiddleware implements NestMiddleware {
     
       const decoded = jwt.verify(token, SECRET_KEY) as jwt.JwtPayload; 
       
-      const user = await this.userService.findOne(decoded.sub);
+      const user = await this.userService.findOneUser(decoded.sub);
 
       if (!user || user.role !== 'admin') {
         throw new UnauthorizedException('Only admins can access this resource');

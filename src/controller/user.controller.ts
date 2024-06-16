@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/service/user.service';
 import { CreateUserDto } from 'src/DTO/user/create-user.dto';
 import { UpdateUserDto } from 'src/DTO/user/update-user.dto';
@@ -32,7 +32,7 @@ export class UserController {
   @ApiResponse({ status: 404, description: 'User not found.' })
   @ApiBearerAuth()
   findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+    return this.userService.findOneUser(id);
   }
 
   @Put(':id')
@@ -42,8 +42,14 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'User updated successfully.' })
   @ApiResponse({ status: 404, description: 'User not found.' })
   @ApiBearerAuth()
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(id, updateUserDto);
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    const userUpdate = await this.userService.update(id, updateUserDto);
+    
+    if (!userUpdate) {
+      throw new UnauthorizedException('Dados inválidos.');
+    }
+
+    return userUpdate
   }
 
   @Delete(':id')
