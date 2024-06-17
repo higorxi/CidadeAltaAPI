@@ -2,9 +2,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
-
+COPY ["package.json", "package-lock.json", "tsconfig.json", ".env", "./"]
+RUN npm cache clean --force
 RUN npm install
+COPY . .
 
 COPY . .
 
