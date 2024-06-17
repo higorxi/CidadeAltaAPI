@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://cidadealta.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e2f0d75bc17943579a561a68587f610d }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_e13ba0dff7e24c0fa835595dfa83c68f }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_28c2a503b0e54547a6f0830e98cd91d0 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e50bb7de3b9c4ce4b17aadcdc397824c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: cidadealta.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e2f0d75bc17943579a561a68587f610d }}/cidade-alta-api:${{ github.sha }}
+        tags: cidadealta.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_28c2a503b0e54547a6f0830e98cd91d0 }}/cidade-alta-api1:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'cidade-alta-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b9f3057df3ff43cc88c9ca37988bcf92 }}
-        images: 'cidadealta.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e2f0d75bc17943579a561a68587f610d }}/cidade-alta-api:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_658c547ef79543bca621df6294a99215 }}
+        images: 'cidadealta.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_28c2a503b0e54547a6f0830e98cd91d0 }}/cidade-alta-api1:${{ github.sha }}'
