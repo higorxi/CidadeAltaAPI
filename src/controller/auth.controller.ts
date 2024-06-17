@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UnauthorizedException, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, UnauthorizedException, HttpCode, Get } from '@nestjs/common';
 import { AuthService } from 'src/service/auth.service';
 import { LoginDto } from 'src/DTO/auth/login.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
@@ -7,6 +7,12 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+
+  @Get()
+  checkStatus(): string {
+    return 'Conectado';
+  }
 
   @Post('login')
   @ApiOperation({ summary: 'Login user' })
