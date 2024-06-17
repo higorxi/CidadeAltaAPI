@@ -2,6 +2,7 @@ import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/commo
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { SECRET_KEY } from 'src/configs/general.config';
+import { validate as isUUID } from 'uuid';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
@@ -35,7 +36,7 @@ export class AuthMiddleware implements NestMiddleware {
       const parts = path.split('/');
       const userId = parts[parts.length - 1]; 
 
-      if (userId !== decodedToken.sub) {
+      if (isUUID(userId) && userId !== decodedToken.sub) {
         throw new UnauthorizedException('Unauthorized access');
       }
 

@@ -19,7 +19,7 @@ export class AuthController {
     if (!user) {
       throw new UnauthorizedException('Usuário inválido.');
     }
-    const userLogin = await this.authService.login(user)
+    const userLogin = await this.authService.login(user.id)
 
     if (!userLogin) {
       throw new UnauthorizedException('Credenciais inválidas.');

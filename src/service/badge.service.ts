@@ -20,7 +20,7 @@ export class BadgeService {
     return this.badgeRepository.save(badge);
   }
 
-  async assignRandomBadge(userId: string, type?: 'bronze' | 'prata' | 'ouro'): Promise<User> {
+  async assignRandomBadge(userId: string, type?: 'bronze' | 'prata' | 'ouro'): Promise<{ user: Partial<User>, badge: Badge }> {
     const user = await this.userRepository.findOne({
       where: { id: userId },
       relations: ['badges'],
@@ -50,7 +50,9 @@ export class BadgeService {
     const badgeToAssign = availableBadges[randomIndex];
 
     user.badges.push(badgeToAssign);
-    return this.userRepository.save(user);
+    await this.userRepository.save(user);
+
+    return {user: user, badge: badgeToAssign};
   }
 
   async findAllBadges(): Promise<Badge[]> {
