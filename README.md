@@ -114,7 +114,7 @@ $ npm run start:prod
 
 A documentação da API foi realizada via Swagger, para acessar, basta rodar o container ou apenas o Back-End e acessar: http://localhost:3000/api-docs
 
-Nesse link você irá encontrar um Drive com um arquivo para Insomnia ou Postman com alguns corpos de requisições principais: [Google Drive]([https://docs.nestjs.com/support](https://drive.google.com/drive/folders/1ccMQSPYO3jZeFRpD-89FXbv_3R1jwCLh?usp=sharing)).
+Nesse link você irá encontrar um Drive com um arquivo para Insomnia ou Postman com alguns corpos de requisições principais: [Google Drive](https://drive.google.com/drive/folders/1ccMQSPYO3jZeFRpD-89FXbv_3R1jwCLh?usp=sharing).
 
 ## 🎯 Requisitos atendidos
 - [x]  Persistência de dados.
