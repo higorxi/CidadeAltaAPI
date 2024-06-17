@@ -1,3 +1,5 @@
+# Cidade Alta API
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -19,20 +21,81 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+Esse projeto se baseia na resolução do desafio técnico proposto pelo time da Cidade Alta, a criação de uma API para cadastro e login de usuários, atualização de informações do perfil, resgate de emblemas e ademais itens opcionais.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📋 Tecnologias Utilizadas
 
-## Installation
+[Nest](https://github.com/nestjs/nest) .
+
+[PostgresSQL](https://www.postgresql.org/) .
+
+[Docker](https://www.docker.com/) .
+
+[Swagger](https://swagger.io/) .
+
+## 🚀 Instalando 
+
+Para instalar o Cidade Alta API, siga estas etapas:
+
+### 1. Clone o repositório:
+
+Primeiro, clone o repositório do projeto para a sua máquina local. Abra um terminal e execute o seguinte comando:
+
+```bash
+$ git clone <URL-do-repositório>
+```
+
+### 2.Navegue até o diretório do projeto:
+
+Depois de clonar o repositório, entre no diretório do projeto:
+
+```bash
+$ cd <nome-do-diretório-do-projeto>
+```
+
+### 3.Instale as dependências:
+
+Instale todas as dependências do projeto usando npm (ou yarn, se preferir):
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+Ou, se estiver usando yarn:
+
+```bash
+$ yarn install
+```
+## Adicionando variáveis de ambiente
+
+```sh
+cp .env.example .env
+```
+
+## Executando o APP
+
+```bash
+$ docker compose up --build
+```
+
+Agora devemos ter um container Docker rodando no seu computador e sendo possível acessar a porta do Back-End configurada
+
+```bash
+$ http://localhost:3000
+```
+
+
+## Caso queira rodar apenas o back-end sem o PostgresSQL no Docker (o que irá ocasionar erro se não for configurado corretamente o Postgres local
+
+### Installation
+
+```bash
+$ npm install
+```
+
+### Running the app
 
 ```bash
 # development
@@ -45,18 +108,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support
 
