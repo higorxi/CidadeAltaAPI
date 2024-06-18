@@ -26,7 +26,7 @@
 
 
 ## Description
-Esse projeto se baseia na resolução do desafio técnico proposto pelo time da Cidade Alta, a criação de uma API para cadastro e login de usuários, atualização de informações do perfil, resgate de emblemas e ademais itens opcionais.
+Esse projeto se baseia na resolução do desafio técnico proposto pelo time da Cidade Alta, a criação de uma API para cadastro e login de usuários, atualização de informações do perfil, resgate de emblemas e ademais itens opcionais. A aplicação se encontra rodando no [FRONT-END CIDADE ALTA](https://cidade-alta-1tjjam530-higor-giovanes-projects.vercel.app/login) e o backend em [CIDADE ALTA API](cidade-alta-api.azurewebsites.net) caso queira fazer requisições para um projeto já com deploy realizado.
 
 ## 📋 Tecnologias Utilizadas
 
